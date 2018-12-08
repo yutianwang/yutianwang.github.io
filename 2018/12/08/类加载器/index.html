@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>虚拟机类加载机制 | tianyu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###类加载机制:  虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。  加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。  注意点1: 每个class文件都可能代表java中的一个类或者接口。   注意点2：class文件并不一定是指磁盘中的文件，而是一串二进制字节流。  存在的方式有:  1):从ZI">
+  <meta name="description" content="类加载机制: 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。  加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。  注意点1: 每个class文件都可能代表java中的一个类或者接口。   注意点2：class文件并不一定是指磁盘中的文件，而是一串二进制字节流。  存在的方式有:  1):从ZIP包中读">
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="虚拟机类加载机制">
 <meta property="og:url" content="http://yoursite.com/2018/12/08/类加载器/index.html">
 <meta property="og:site_name" content="tianyu&#39;s blog">
-<meta property="og:description" content="###类加载机制:  虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。  加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。  注意点1: 每个class文件都可能代表java中的一个类或者接口。   注意点2：class文件并不一定是指磁盘中的文件，而是一串二进制字节流。  存在的方式有:  1):从ZI">
+<meta property="og:description" content="类加载机制: 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。  加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。  注意点1: 每个class文件都可能代表java中的一个类或者接口。   注意点2：class文件并不一定是指磁盘中的文件，而是一串二进制字节流。  存在的方式有:  1):从ZIP包中读">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3251891-d34761b5a29e065b.png?imageMogr2/auto-orient/">
-<meta property="og:updated_time" content="2018-12-08T15:07:03.990Z">
+<meta property="og:updated_time" content="2018-12-08T15:09:18.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚拟机类加载机制">
-<meta name="twitter:description" content="###类加载机制:  虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。  加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。  注意点1: 每个class文件都可能代表java中的一个类或者接口。   注意点2：class文件并不一定是指磁盘中的文件，而是一串二进制字节流。  存在的方式有:  1):从ZI">
+<meta name="twitter:description" content="类加载机制: 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。  加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。  注意点1: 每个class文件都可能代表java中的一个类或者接口。   注意点2：class文件并不一定是指磁盘中的文件，而是一串二进制字节流。  存在的方式有:  1):从ZIP包中读">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3251891-d34761b5a29e065b.png?imageMogr2/auto-orient/">
   
     <link rel="alternative" href="/atom.xml" title="tianyu&#39;s blog" type="application/atom+xml">
@@ -183,8 +183,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###类加载机制:</p>
-<ul>
+        <h3 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制:"></a>类加载机制:</h3><ul>
 <li>虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。</li>
 </ul>
 <p>加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。</p>
@@ -397,7 +396,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载器"><span class="toc-number">1.</span> <span class="toc-text">类加载器</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载机制"><span class="toc-number">1.</span> <span class="toc-text">类加载机制:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载器"><span class="toc-number">2.</span> <span class="toc-text">类加载器</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -519,11 +518,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
             
             <div class="clearfix"></div>
