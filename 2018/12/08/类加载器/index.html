@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>生活，就是过的一种心情 | tianyu&#39;s blog</title>
+  <title>虚拟机类加载机制 | tianyu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="生活，就是过的一种心情生活，没有什么大道理可言，过日子，就是一种心情， 用好的心情去生活，累也不说累，苦也不言苦。 幸福，或许正是体现在这“不说累”和“不言苦”当中…… 生活，就是过的一种心情　　我也常常会累，也常常会心情浮燥，常常在一些早已老去的回忆里念念不忘；常常因为将心情投入了哪段文、或者是哪首歌而引发了些感慨；也很容易陷入别人的情绪或别人的故事；所以，也总是絮絮着些忧伤。 　　实际生活，却">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="类加载机制: 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。  加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。  注意点1: 每个class文件都可能代表java中的一个类或者接口。   注意点2：class文件并不一定是指磁盘中的文件，而是一串二进制字节流。  存在的方式有:  1):从ZIP包中读">
+<meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="生活，就是过的一种心情">
-<meta property="og:url" content="http://yoursite.com/2018/12/03/生活/index.html">
+<meta property="og:title" content="虚拟机类加载机制">
+<meta property="og:url" content="http://yoursite.com/2018/12/08/类加载器/index.html">
 <meta property="og:site_name" content="tianyu&#39;s blog">
-<meta property="og:description" content="生活，就是过的一种心情生活，没有什么大道理可言，过日子，就是一种心情， 用好的心情去生活，累也不说累，苦也不言苦。 幸福，或许正是体现在这“不说累”和“不言苦”当中…… 生活，就是过的一种心情　　我也常常会累，也常常会心情浮燥，常常在一些早已老去的回忆里念念不忘；常常因为将心情投入了哪段文、或者是哪首歌而引发了些感慨；也很容易陷入别人的情绪或别人的故事；所以，也总是絮絮着些忧伤。 　　实际生活，却">
+<meta property="og:description" content="类加载机制: 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。  加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。  注意点1: 每个class文件都可能代表java中的一个类或者接口。   注意点2：class文件并不一定是指磁盘中的文件，而是一串二进制字节流。  存在的方式有:  1):从ZIP包中读">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-03T11:20:28.872Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20140105211344671">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3251891-d34761b5a29e065b.png?imageMogr2/auto-orient/">
+<meta property="og:updated_time" content="2018-12-08T14:49:29.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="生活，就是过的一种心情">
-<meta name="twitter:description" content="生活，就是过的一种心情生活，没有什么大道理可言，过日子，就是一种心情， 用好的心情去生活，累也不说累，苦也不言苦。 幸福，或许正是体现在这“不说累”和“不言苦”当中…… 生活，就是过的一种心情　　我也常常会累，也常常会心情浮燥，常常在一些早已老去的回忆里念念不忘；常常因为将心情投入了哪段文、或者是哪首歌而引发了些感慨；也很容易陷入别人的情绪或别人的故事；所以，也总是絮絮着些忧伤。 　　实际生活，却">
+<meta name="twitter:title" content="虚拟机类加载机制">
+<meta name="twitter:description" content="类加载机制: 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。  加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。  注意点1: 每个class文件都可能代表java中的一个类或者接口。   注意点2：class文件并不一定是指磁盘中的文件，而是一串二进制字节流。  存在的方式有:  1):从ZIP包中读">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20140105211344671">
   
     <link rel="alternative" href="/atom.xml" title="tianyu&#39;s blog" type="application/atom+xml">
   
@@ -161,38 +164,98 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-生活" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-类加载器" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      生活，就是过的一种心情
+      虚拟机类加载机制
     </h1>
   
 
         
-        <a href="/2018/12/03/生活/" class="archive-article-date">
-  	<time datetime="2018-12-03T11:20:43.141Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-03</time>
+        <a href="/2018/12/08/类加载器/" class="archive-article-date">
+  	<time datetime="2018-12-08T14:49:36.310Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="生活，就是过的一种心情"><a href="#生活，就是过的一种心情" class="headerlink" title="生活，就是过的一种心情"></a>生活，就是过的一种心情</h3><p>生活，没有什么大道理可言，过日子，就是一种心情， 用好的心情去生活，累也不说累，苦也不言苦。 幸福，或许正是体现在这“不说累”和“不言苦”当中……</p>
-<p>生活，就是过的一种心情　　我也常常会累，也常常会心情浮燥，常常在一些早已老去的回忆里念念不忘；常常因为将心情投入了哪段文、或者是哪首歌而引发了些感慨；也很容易陷入别人的情绪或别人的故事；所以，也总是絮絮着些忧伤。</p>
-<p>　　实际生活，却是在甩甩打打中过得简单而痛快，并没让哪种琐事牵拌着情绪过日子，也不让太多杂七杂八的事乱了心绪，所以，生活有时候尽管会忙碌些繁琐些，心却并不累。</p>
-<p>　　过日子，真的就是个心情， 歌里唱的，剧中演的，或许会有那么点滴的情绪影射，却不是完全属于自己的，感慨过之后，就好好过自己的日子， 无非就是一家老小，无非就是家庭工作，而一切的一切，最终无非都落在了“心情”二字之上。</p>
-<p>　　生活，不是件简单的事， 没有太多的一帆风顺，也没有太多的心想事成，有的，只是些随时可能的“碰壁”……</p>
-<p>　　或许，倾心已久的人就在你举目可见的地方，却不一定是在等你；</p>
-<p>　　或许，付出努力和艰苦后，你的钞票并不会乖乖地躲进你的腰包里；</p>
-<p>　　或许，积年累月地寻找着突破事业的窗口，现实却并不成全你；</p>
-<p>　　或许，你的肉体会遭遇些病痛；</p>
-<p>　　或许，你的亲人在经历些变故；</p>
-<p>　　或许，你的明天依旧遥远；</p>
-<p>　　或许，……</p>
+        <h2 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制:"></a>类加载机制:</h2><ul>
+<li>虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。</li>
+</ul>
+<p>加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。</p>
+<ul>
+<li>注意点1: <font color="#FF0033">每个class文件都可能代表java中的一个类或者接口。 </font> </li>
+<li>注意点2：<font color="#FF0033">class文件并不一定是指磁盘中的文件，而是一串二进制字节流。 </font> 存在的方式有:</li>
+</ul>
+<p>1):从ZIP包中读取</p>
+<p>2):网络中获取</p>
+<p>3):利用动态代理技术</p>
+<p>4):由其他文件生成:比如jsp对于的class类</p>
+<p>5):数据库中读取</p>
+<h2 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h2><div align="center"><br>   <img src="https://img-blog.csdn.net/20140105211344671" alt="幸福" title="幸福" width="80%" height="30%"><br></div>
+
+
+
+<p> <strong>加载阶段</strong>:</p>
+<p>在加载阶段，虚拟机需要3件事。</p>
+<ul>
+<li><p>1）通过类的全限定名来获取定义此类的二进制字节流</p>
+</li>
+<li><p>2）将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</p>
+</li>
+<li><p>3）在内存中生成一个代表这个类的Class对象，作为方法去这个类的各种数据的访问入口。</p>
+<p><strong>验证阶段</strong>:</p>
+</li>
+<li><p>这个阶段非常重要，可以确保虚拟机自身的安全。因为二进制字节流可以以多种方式获取。</p>
+</li>
+<li><p>1）文件格式的验证</p>
+</li>
+<li><p>2）元数据验证</p>
+</li>
+<li><p>3）字节码验证</p>
+</li>
+<li><p>4）符号引用验证</p>
+<p><strong>准备阶段</strong>: </p>
+</li>
+</ul>
+<p>准备阶段是正式为类变量分配内存并设置类变量初始化值的阶段，这些变量所使用的内存都将在方法区中进行分配。这里说的变量是指被static修饰的，进行初始化，通常为0。但被static final修饰的，不会变为0，而是具体的值本身。</p>
+<p> <strong>解析阶段</strong>:</p>
+<p>虚拟机将常量池内的符合引用替换为直接引用的过程。（此阶段没有太理解，后续再研究）</p>
+<p> <strong>初始化阶段</strong>:</p>
+<ul>
+<li><p>1）遇到new，getstatic,putstatic或invoke指令。</p>
+</li>
+<li><p>2）对类进行反射</p>
+</li>
+<li><p>3）当初始化一个类时，如果发现其父类没有进行初始化，则先初始化父类</p>
+</li>
+<li><p>4）当虚拟机启动时，用户需要指定一个要执行的主类，则会先初始化这个主类</p>
+</li>
+<li><p>5）MethodHandler实例最后解析是REF_getStatic等</p>
+</li>
+</ul>
+<p><em>反例</em>: </p>
+<ul>
+<li><p>1）通过子类引用父类的静态字段，不会导致子类初始化</p>
+</li>
+<li><p>2） 通过数组来引用类，不会促发此类初始化</p>
+</li>
+<li><p>3）常量在编译阶段会存入调用类的常量池中，本质上并没有直接引用到定义常量的类，因此不会促发定义常量的类的初始化</p>
+</li>
+</ul>
+<h2 id="类加载器"><a href="#类加载器" class="headerlink" title=" 类加载器"></a> 类加载器</h2><p>如何判断二个类是否相等？ 这二个类必须来自于用一个class文件，其次必须是被同一个类加载器加载（而不是同一个虚拟机，因为同一个虚拟机有不同的加载器）</p>
+<p> <strong>双亲委派模型</strong></p>
+<div align="center"><br>   <img src="https://upload-images.jianshu.io/upload_images/3251891-d34761b5a29e065b.png?imageMogr2/auto-orient/" alt="幸福" title="幸福" width="60%" height="90%"><br></div>
+
+<p>启动类加载器（Bootstrap ClassLoader):位于/lib目录中的jar包</p>
+<p>扩展类加载器（Extenstion ClassLoader）:位于/lib/ext目录中的jar包</p>
+<p>应用程序类加载器（Application ClassLoader）：classpath上指定的类库。一般情况下，这个程序就是默认的类加载器</p>
+<p><strong>如果类加载器收到了类加载的请求，它不会自己去尝试加载这个类，而是将这个请求委派给父类加载器，每一个层次都是如此，因此所有的加载请求最终都会传送到顶层类加载器中</strong>（Bootstrap ClassLoader),只有当父加载器反馈自己无法完成这个加载请求的时候，子加载器才会尝试去加载。这样做的优势在于防止程序员乱命名类名，试想，如果命名了一个java.lang.Object的类，那么系统中会出现不同的Object类，那么Java体系中最基础的行为也就无法得到保证，应用程序将会变的混乱。</p>
 
       
 
@@ -237,7 +300,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
         		</li>
       		
 		</ul>
@@ -293,7 +356,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/12/03/生活/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/12/08/类加载器/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -307,18 +370,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/12/03/幸福很简单/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          幸福很简单
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/10/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2018/12/03/幸福很简单/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">幸福很简单</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -345,7 +399,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#生活，就是过的一种心情"><span class="toc-number">1.</span> <span class="toc-text">生活，就是过的一种心情</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#类加载机制"><span class="toc-number">1.</span> <span class="toc-text">类加载机制:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类的生命周期"><span class="toc-number">2.</span> <span class="toc-text">类的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类加载器"><span class="toc-number">3.</span> <span class="toc-text"> 类加载器</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -361,7 +415,7 @@
   
 
   
-  <div id="SOHUCS" sid="生活" ></div> 
+  <div id="SOHUCS" sid="类加载器" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
