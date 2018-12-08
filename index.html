@@ -178,7 +178,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制:"></a>类加载机制:</h2><ul>
+        <p>###类加载机制:</p>
+<ul>
 <li>虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。</li>
 </ul>
 <p>加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。</p>
@@ -191,7 +192,8 @@
 <p>3):利用动态代理技术</p>
 <p>4):由其他文件生成:比如jsp对于的class类</p>
 <p>5):数据库中读取</p>
-<h2 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h2><div align="center"><br>   <img src="https://img-blog.csdn.net/20140105211344671" alt="幸福" title="幸福" width="80%" height="30%"><br></div>
+<p>###类的生命周期</p>
+<div align="center"><br>   <img src="https://img-blog.csdn.net/20140105211344671" alt="幸福" title="幸福" width="70%" height="28%"><br></div>
 
 
 
@@ -243,9 +245,9 @@
 <li><p>3）常量在编译阶段会存入调用类的常量池中，本质上并没有直接引用到定义常量的类，因此不会促发定义常量的类的初始化</p>
 </li>
 </ul>
-<h2 id="类加载器"><a href="#类加载器" class="headerlink" title=" 类加载器"></a> 类加载器</h2><p>如何判断二个类是否相等？ 这二个类必须来自于用一个class文件，其次必须是被同一个类加载器加载（而不是同一个虚拟机，因为同一个虚拟机有不同的加载器）</p>
+<h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p>如何判断二个类是否相等？ 这二个类必须来自于用一个class文件，其次必须是被同一个类加载器加载（而不是同一个虚拟机，因为同一个虚拟机有不同的加载器）</p>
 <p> <strong>双亲委派模型</strong></p>
-<div align="center"><br>   <img src="https://upload-images.jianshu.io/upload_images/3251891-d34761b5a29e065b.png?imageMogr2/auto-orient/" alt="幸福" title="幸福" width="40%" height="60%"><br></div>
+<div align="center"><br>   <img src="https://upload-images.jianshu.io/upload_images/3251891-d34761b5a29e065b.png?imageMogr2/auto-orient/" alt="幸福" title="幸福" width="30%" height="50%"><br></div>
 
 <p>启动类加载器（Bootstrap ClassLoader):位于/lib目录中的jar包</p>
 <p>扩展类加载器（Extenstion ClassLoader）:位于/lib/ext目录中的jar包</p>
