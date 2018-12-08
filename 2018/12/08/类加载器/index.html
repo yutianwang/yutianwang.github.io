@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20140105211344671">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3251891-d34761b5a29e065b.png?imageMogr2/auto-orient/">
-<meta property="og:updated_time" content="2018-12-08T14:49:29.215Z">
+<meta property="og:updated_time" content="2018-12-08T14:54:23.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚拟机类加载机制">
 <meta name="twitter:description" content="类加载机制: 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。  加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。  注意点1: 每个class文件都可能代表java中的一个类或者接口。   注意点2：class文件并不一定是指磁盘中的文件，而是一串二进制字节流。  存在的方式有:  1):从ZIP包中读">
@@ -211,8 +211,9 @@
 <li><p>3）在内存中生成一个代表这个类的Class对象，作为方法去这个类的各种数据的访问入口。</p>
 <p><strong>验证阶段</strong>:</p>
 </li>
-<li><p>这个阶段非常重要，可以确保虚拟机自身的安全。因为二进制字节流可以以多种方式获取。</p>
-</li>
+</ul>
+<p>这个阶段非常重要，可以确保虚拟机自身的安全。因为二进制字节流可以以多种方式获取。</p>
+<ul>
 <li><p>1）文件格式的验证</p>
 </li>
 <li><p>2）元数据验证</p>
@@ -250,7 +251,7 @@
 </ul>
 <h2 id="类加载器"><a href="#类加载器" class="headerlink" title=" 类加载器"></a> 类加载器</h2><p>如何判断二个类是否相等？ 这二个类必须来自于用一个class文件，其次必须是被同一个类加载器加载（而不是同一个虚拟机，因为同一个虚拟机有不同的加载器）</p>
 <p> <strong>双亲委派模型</strong></p>
-<div align="center"><br>   <img src="https://upload-images.jianshu.io/upload_images/3251891-d34761b5a29e065b.png?imageMogr2/auto-orient/" alt="幸福" title="幸福" width="60%" height="90%"><br></div>
+<div align="center"><br>   <img src="https://upload-images.jianshu.io/upload_images/3251891-d34761b5a29e065b.png?imageMogr2/auto-orient/" alt="幸福" title="幸福" width="40%" height="60%"><br></div>
 
 <p>启动类加载器（Bootstrap ClassLoader):位于/lib目录中的jar包</p>
 <p>扩展类加载器（Extenstion ClassLoader）:位于/lib/ext目录中的jar包</p>
