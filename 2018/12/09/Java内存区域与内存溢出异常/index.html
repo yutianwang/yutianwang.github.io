@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java内存区域与内存溢出异常 | tianyu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java虚拟机在执行java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则依赖用户线程的启动和结束而建立和销毁。">
+  <meta name="description" content="java虚拟机在执行java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。">
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java内存区域与内存溢出异常">
 <meta property="og:url" content="http://yoursite.com/2018/12/09/Java内存区域与内存溢出异常/index.html">
 <meta property="og:site_name" content="tianyu&#39;s blog">
-<meta property="og:description" content="java虚拟机在执行java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则依赖用户线程的启动和结束而建立和销毁。">
+<meta property="og:description" content="java虚拟机在执行java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/0065oQSqgy1fxd7vcz86nj30qo0ybqc1.jpg">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4719363-8be7a3c08cb76d29.jpg?imageMogr2/auto-orient/">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/771813/201704/771813-20170417115632165-1345051392.png">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/771813/201704/771813-20170417115826993-747239194.png">
-<meta property="og:updated_time" content="2018-12-09T15:13:33.892Z">
+<meta property="og:updated_time" content="2018-12-09T15:20:12.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java内存区域与内存溢出异常">
-<meta name="twitter:description" content="java虚拟机在执行java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则依赖用户线程的启动和结束而建立和销毁。">
+<meta name="twitter:description" content="java虚拟机在执行java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/0065oQSqgy1fxd7vcz86nj30qo0ybqc1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="tianyu&#39;s blog" type="application/atom+xml">
@@ -186,11 +186,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div align="center"><br>   <img src="https://ws1.sinaimg.cn/large/0065oQSqgy1fxd7vcz86nj30qo0ybqc1.jpg" alt="Java内存区域模型" title="Java内存区域模型" width="50%" height="60%"><br></div>
+        <p>java虚拟机在执行java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。<br><a id="more"></a></p>
+<div align="center"><br>   <img src="https://ws1.sinaimg.cn/large/0065oQSqgy1fxd7vcz86nj30qo0ybqc1.jpg" alt="Java内存区域模型" title="Java内存区域模型" width="50%" height="60%"><br></div>
 
-
-<p>java虚拟机在执行java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则依赖用户线程的启动和结束而建立和销毁。</p>
-<a id="more"></a>
+<p>这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则依赖用户线程的启动和结束而建立和销毁。</p>
 <div align="center"><br>   <img src="https://upload-images.jianshu.io/upload_images/4719363-8be7a3c08cb76d29.jpg?imageMogr2/auto-orient/" alt="Java内存区域模型" title="Java内存区域模型" width="80%" height="60%"><br></div>
 
 
