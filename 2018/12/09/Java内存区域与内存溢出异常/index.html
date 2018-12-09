@@ -18,9 +18,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/0065oQSqgy1fxd7vcz86nj30qo0ybqc1.jpg">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4719363-8be7a3c08cb76d29.jpg?imageMogr2/auto-orient/">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/771813/201704/771813-20170417115632165-1345051392.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/771813/201704/771813-20170417115826993-747239194.png">
-<meta property="og:updated_time" content="2018-12-09T15:20:12.298Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4348244-1389e820e00fefd3.png?imageMogr2/auto-orient/">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4348244-709d892e8fdb7956.png?imageMogr2/auto-orient/">
+<meta property="og:updated_time" content="2018-12-09T15:27:17.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java内存区域与内存溢出异常">
 <meta name="twitter:description" content="java虚拟机在执行java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。">
@@ -216,9 +216,9 @@
 </ul>
 <p>选择哪种分配方法取决于java堆是否规整，而是否规整又取决于GC是否带有压缩整理功能。Serial,ParNew,等带Compact功能的收集器时，采用指针碰撞。而CMS收集器时用Mark-Sweep,通常采用空闲列表。</p>
 <h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>对象在内存中存储的布局可以分为3块区域，对象头，实例数据，和对齐填充。</p>
-<div align="center"><br>   <img src="https://images2015.cnblogs.com/blog/771813/201704/771813-20170417115632165-1345051392.png" alt="Java内存区域模型" title="Java内存区域模型" width="70%" height="40%"><br></div>
+<div align="center"><br>   <img src="https://upload-images.jianshu.io/upload_images/4348244-1389e820e00fefd3.png?imageMogr2/auto-orient/" alt="Java内存区域模型" title="Java内存区域模型" width="70%" height="40%"><br></div>
 
-<div align="center"><br>   <img src="https://images2015.cnblogs.com/blog/771813/201704/771813-20170417115826993-747239194.png" alt="Java内存区域模型" title="Java内存区域模型" width="70%" height="40%"><br></div>
+<div align="center"><br>   <img src="https://upload-images.jianshu.io/upload_images/4348244-709d892e8fdb7956.png?imageMogr2/auto-orient/" alt="Java内存区域模型" title="Java内存区域模型" width="70%" height="40%"><br></div>
 
 <h3 id="实战OutOfMemoryErrory异常"><a href="#实战OutOfMemoryErrory异常" class="headerlink" title="实战OutOfMemoryErrory异常"></a>实战OutOfMemoryErrory异常</h3><p> <strong>堆溢出</strong></p>
 <p>-Xms10m -Xmx10m -XX:+HeapDumpOnOutOfMemoryError</p>
