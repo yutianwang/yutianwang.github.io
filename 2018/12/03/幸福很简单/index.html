@@ -1,99 +1,178 @@
-extends includes/layout.pug
 
-block top_img
-  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
-  if (top_img && page.top_img !== false)
-    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
-    - var flag = top_img === true ? 'no-bg' : ''
-    div#top-container(style=bg_img class=flag)
-      include ./includes/header.pug
-      #post-info
-        #post-title= page.title || _p('no_title')
-        #post-meta
-          if (theme.post_meta.date_type)
-            - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
-            time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-          if (theme.post_meta.categories && page.categories.data.length > 0)
-            if (theme.post_meta.date_type)
-              span.post-meta__separator |
-            each item, index in page.categories.data
-              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
-              a(href=url_for(item.path)).post-meta__categories #[=item.name]
-              if (index < page.categories.data.length - 1)
-                 i.fa.fa-angle-right(aria-hidden="true")
-          if (theme.disqus.enable && theme.disqus.count)
-            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-              span.post-meta__separator |
-            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
-            a(href=url_for(page.path) + '#disqus_thread')
-              span.disqus-comment-count(data-disqus-identifier=page.path)
-          if (theme.wordcount && theme.wordcount.enable)
-            .post-meta-wordcount
-              span= _p('post.wordcount') + ': '
-              span.word-count= wordcount(page.content)
-              span.post-meta__separator |
-              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-  else
-    div#top-container.plain
-      include ./includes/header.pug
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>幸福很简单 - tianyu&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="   幸福很简单，简单得在它来到我们身边的时候，我们根本无从察觉。在寻找幸福的大军里，我们缺少的是标榜”真正幸福含义”的旗帜。幸福是一种感觉，你感觉到了，便是拥有。珍惜全部的拥有，就是最幸福的人。
+,"> 
+    <meta name="author" content="tianyu"> 
+    <link rel="alternative" href="atom.xml" title="tianyu&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
 
-block content
-  article#post(class="")
-    if (!top_img)
-      #post-title.plain= page.title || _p('no_title')
-      #post-meta
-        if (theme.post_meta.date_type)
-          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
-          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-        if (theme.post_meta.categories && page.categories.data.length > 0)
-          if (theme.post_meta.date_type)
-            span.post-meta__separator |
-          each item, index in page.categories.data
-            i.fa.fa-inbox(aria-hidden="true")
-            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
-            if (index < page.categories.data.length - 1)
-                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
-        if (theme.disqus.enable && theme.disqus.count)
-          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-            span.post-meta__separator |
-          i.fa.fa-comment-o(aria-hidden="true")
-          a(href=url_for(page.path) + '#disqus_thread')
-            span.disqus-comment-count(data-disqus-identifier=page.path)
-        if (theme.wordcount && theme.wordcount.enable)
-          span.post-meta__separator |
-          span.post-meta-wordcount
-            span= _p('post.wordcount') + ': '
-            span.word-count= wordcount(page.content)
-            span.post-meta__separator |
-            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-    #post-content.article-container!= page.content
-  if (theme.post_copyright && theme.post_copyright.enable)
-    .post-copyright
-      .post-copyright__author
-        span.post-copyright-meta= _p('post.copyright.author') + ": "
-        span.post-copyright-info
-          a(href=`mailto:${config.email}`) #[=config.author]
-      .post-copyright__type
-        span.post-copyright-meta= _p('post.copyright.link') + ": "
-        span.post-copyright-info
-          a(href=url_for(page.permalink)) #[=page.permalink]
-      .post-copyright__notice
-        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
-        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
-  if (theme.post_meta.tags)
-    .post-meta__tag-list
-      each item, index in page.tags.data
-        a(href=url_for(item.path)).post-meta__tags #[=item.name]
-  if (theme.QR_code)
-    if (theme.QR_code.length > 0)
-      .post-qr-code
-        each item in theme.QR_code
-          .post-qr-code-item
-            img.post-qr-code__img(src=(item.itemlist||item).img)
-            .post-qr-code__desc=(item.itemlist||item).text
-  include includes/share/index.pug
-  include includes/pagination.pug
-  if (theme.adv && theme.adv.enable)
-    .post-adv!= theme.adv.info
-  if page.comments !== false
-    include includes/comments/index.pug
+<body class="loading">
+    <span id="config-title" style="display:none">tianyu&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">幸福很简单</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">幸福很简单</h1>
+        <div class="stuff">
+            <span>十二月 03, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/随笔/">随笔</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>   幸福很简单，简单得在它来到我们身边的时候，我们根本无从察觉。在寻找幸福的大军里，我们缺少的是标榜”真正幸福含义”的旗帜。幸福是一种感觉，你感觉到了，便是拥有。珍惜全部的拥有，就是最幸福的人。<br><a id="more"></a></p>
+<p>　　时时在想，幸福离我有多远？却被自己一个一个的理由推翻，原来，幸福一直就在我身边。很小很小的时候，有亲人温暖的怀抱，有可亲可爱的伙伴陪着自由的玩耍，一起唱着的歌如鸟儿的欢叫声回荡在大自然赐于的每一个脚落，那个时候，幸福就在身边。</p>
+<p>　　时间逝去，我们都在成长。成长中的我们，在一次次考试结束后捧回的奖状，在一次次得到肯定和赞赏的眼光中，在一次次战胜困难的时候，都会领略到幸福的滋味，虽然当中多了一份苦恼，可是仍然感到了幸福，幸福就在我们身边。</p>
+<p>　　成长的过程里总会有些意外的惊喜和意外的悲伤跳跃在眼前。一个可以随意撒欢的年纪是乎渐渐远去，似乎生命中最初的纯真就那这样恋恋不舍地留在当初那纯粹的心性里了。当面对这世界层出不穷的复杂时终于忍不住在眼神里注满了无奈时。我理解的少年时那段时光的可贵。</p>
+<p>　　长大以后，面临着爱与恋的欢喜、痛苦、纠缠，发现自己再也不是那一张白纸，上面有了太多太多的图案。经历着一次次的爱过后，痛过后，猛然发现幸福来得很快，走得也快。只是，幸福还在的时候，没有努力抓住它，是自己放走了幸福，回到原点，一个人孤独的走。也许很多人也一样，幸福在的时候，淡淡的，一旦失去了才知道拥有，可那个时候，幸福不会再停下脚步来等你，不会的。成长的过程里总会有些意外的惊喜和意外的悲伤跳跃在眼前。一个可以随意撒欢的年纪是乎渐渐远去，似乎生命中最初的纯真就那这样恋恋不舍地留在当初那纯粹的心性里了。当面对这世界层出不穷的复杂时终于忍不住在眼神里注满了无奈时。我理解的少年时那段时光的可贵。</p>
+<div align="center"><br>   <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543848788147&di=0be2265e84cf32ed07f135e5b36c414d&imgtype=0&src=http%3A%2F%2Fpic-cdn.35pic.com%2F58pic%2F13%2F20%2F08%2F78m58PIChwU_1024.jpg" alt="幸福" title="幸福" width="90%" height="50%"><br></div>
+
+
+<p>　　人生不停地在岁月的变幻里交错，许多曾经很特别的经历都在脑海中慢慢平息，甚至消失得没有了踪影。偶然有些回忆都如风掠过时起伏荡漾。人生似乎像电脑的浏览器，一旦选择了链接就注定无法回头。想回头，也是已不愿或者已不能了。于是只有继续朝前走，即便是已经身心疲惫！</p>
+<p>　　于是我在那刻起我便开始告诉自己，幸福离我不远，也许她正在什么地方等着我的出现，有缘则会相遇，无缘则会擦肩而过的躲开。从此一切释然。</p>
+<p>　　一直都觉得自己离幸福并不遥远，却总也找不到，于是用心去做一个漂泊的人，却在不知不觉间好像离幸福又近了一步。</p>
+<p>　　也许，幸福并不是一种完美和永恒，而是心灵和生活万物的一种感应和共鸣，是一种生命和过程的美丽，是一种内心对生活的感觉和领悟。就像花朵在黎明前开放的一刻，秋叶在飘落的短瞬间，执手相看的泪眼，心中的月亮圆缺…那每个快乐的时光都是幸福的。</p>
+<p>　　幸福是什么？是自己内心的感觉，而不是别人的评论。真正的幸福和悲哀，只有自己才懂，每个人的幸福含义，都不会相同吧？宝马香车，富贵荣华就一定幸福么？竹篱茅舍，小几清</p>
+<blockquote>
+<p>   版权: 该文是我的一个女性朋友写的，她是我生命中最重要的人之一。</p>
+</blockquote>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
