@@ -10,12 +10,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="tianyu,"> 
-    <meta name="description" content="
-title: 虚拟机类加载机制date: 2018-11-12 18:38:45categories: 
-- 虚拟机类加载机制
-tags: 
-- JVM
-mp3: http://www.ytmp3,"> 
+    <meta name="description" content="类加载机制:
+虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。
+
+
+   
+
+加载，连接（验证，准备，解析），初始化是,"> 
     <meta name="author" content="tianyu"> 
     <link rel="alternative" href="atom.xml" title="tianyu&#39;s blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/head.jpg"> 
@@ -61,24 +62,18 @@ mp3: http://www.ytmp3,">
     <div class='main'>
         <h1 class="title">虚拟机类加载机制</h1>
         <div class="stuff">
-            <span>十二月 08, 2018</span>
+            <span>十一月 12, 2018</span>
             
   <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/JVM/">JVM</a></li></ul>
 
 
         </div>
         <div class="content markdown">
-            <hr>
-<p>title: 虚拟机类加载机制<br>date: 2018-11-12 18:38:45<br>categories: </p>
-<pre><code>- 虚拟机类加载机制
-</code></pre><p>tags: </p>
-<pre><code>- JVM
-</code></pre><p>mp3: <a href="http://www.ytmp3.cn/down/51245.mp3" target="_blank" rel="noopener">http://www.ytmp3.cn/down/51245.mp3</a></p>
-<h2 id="cover-http-img-netbian-com-file-2018-1122-ee5862643e8e962b63d6e42110ed2a13-jpg"><a href="#cover-http-img-netbian-com-file-2018-1122-ee5862643e8e962b63d6e42110ed2a13-jpg" class="headerlink" title="cover: http://img.netbian.com/file/2018/1122/ee5862643e8e962b63d6e42110ed2a13.jpg"></a>cover: <a href="http://img.netbian.com/file/2018/1122/ee5862643e8e962b63d6e42110ed2a13.jpg" target="_blank" rel="noopener">http://img.netbian.com/file/2018/1122/ee5862643e8e962b63d6e42110ed2a13.jpg</a></h2><h3 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制:"></a>类加载机制:</h3><ul>
+            <h3 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制:"></a>类加载机制:</h3><ul>
 <li>虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。</li>
 </ul>
 <a id="more"></a>
-<div align="center"><br>   <img src="https://ww1.sinaimg.cn/large/0065oQSqly1g2hekfwnd7j30sg0x4djy.jpg" alt="Java内存区域模型" title="Java内存区域模型" width="50%" height="60%"><br></div>
+<div align="center"><br>   <img src="https://ww1.sinaimg.cn/large/0065oQSqly1g2hekfwnd7j30sg0x4djy.jpg" alt="Java内存区域模型" title="Java内存区域模型" width="70%"><br></div>
 
 <p>加载，连接（验证，准备，解析），初始化是在程序运行期间完成的。</p>
 <ul>
@@ -150,16 +145,8 @@ mp3: http://www.ytmp3,">
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-                <source type="audio/mpeg" src="">
+                <source type="audio/mpeg" src="http://www.ytmp3.cn/down/51245.mp3">
             </audio>
-            
-                <ul id="audio-list" style="display:none">
-                    
-                        <li title='0' data-url='http://www.ytmp3.cn/down/51245.mp3'></li>
-                    
-                        <li title='1' data-url='http://www.ytmp3.cn/down/60665.mp3'></li>
-                    
-                </ul>
             
         </div>
         
@@ -177,7 +164,7 @@ mp3: http://www.ytmp3,">
     </div>
     
         <div class='side'>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cover-http-img-netbian-com-file-2018-1122-ee5862643e8e962b63d6e42110ed2a13-jpg"><span class="toc-number">1.</span> <span class="toc-text">cover: http://img.netbian.com/file/2018/1122/ee5862643e8e962b63d6e42110ed2a13.jpg</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载机制"><span class="toc-number">1.1.</span> <span class="toc-text">类加载机制:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载器"><span class="toc-number">1.2.</span> <span class="toc-text">类加载器</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载机制"><span class="toc-number">1.</span> <span class="toc-text">类加载机制:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载器"><span class="toc-number">2.</span> <span class="toc-text">类加载器</span></a></li></ol>
         </div>
     
 </div>
