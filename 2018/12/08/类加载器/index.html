@@ -144,15 +144,15 @@
 <p><strong>如果类加载器收到了类加载的请求，它不会自己去尝试加载这个类，而是将这个请求委派给父类加载器，每一个层次都是如此，因此所有的加载请求最终都会传送到顶层类加载器中</strong>（Bootstrap ClassLoader),只有当父加载器反馈自己无法完成这个加载请求的时候，子加载器才会尝试去加载。这样做的优势在于防止程序员乱命名类名，试想，如果命名了一个java.lang.Object的类，那么系统中会出现不同的Object类，那么Java体系中最基础的行为也就无法得到保证，应用程序将会变的混乱。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
                 <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
-                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                        <li title='0' data-url='http://www.ytmp3.cn/down/60620.mp3'></li>
                     
-                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                        <li title='1' data-url='http://www.ytmp3.cn/down/60665.mp3'></li>
                     
                 </ul>
             
@@ -170,6 +170,10 @@
 
 
     </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载机制"><span class="toc-number">1.</span> <span class="toc-text">类加载机制:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类加载器"><span class="toc-number">2.</span> <span class="toc-text">类加载器</span></a></li></ol>
+        </div>
     
 </div>
 
